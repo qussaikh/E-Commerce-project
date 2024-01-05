@@ -148,14 +148,11 @@ public class OrderServiceImpl implements OrderService{
 				findord=find;
 				count++;
 			}
-
 		}
 		if(count==0) {
 			throw new CustomerNotFoundException("Order not found");
 		}
-	
-		
-		
+
 		List<Products> products2=order.getProductlist();
 		List<Products> products = findord.getProductlist();
 		return findord;
@@ -202,7 +199,7 @@ public class OrderServiceImpl implements OrderService{
 		
 		for(Cart newCart:allCartDetails) {
 			if(newCart.getCustomerlist().getId()==(customerId)) {
-				getProducts.add(newCart.getCartItem());
+				getProducts.add((Products) newCart.getCartItem());
 				allCartDetails.remove(newCart.getCartItem());
 			}
 			

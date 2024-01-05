@@ -3,6 +3,7 @@ package com.qussai.security.eCommerce.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.qussai.security.eCommerce.exception.ProductNotExistsException;
 import com.qussai.security.eCommerce.exception.ProductNotFoundException;
 import com.qussai.security.eCommerce.model.CategoryEnum;
 import com.qussai.security.eCommerce.model.Products;
@@ -26,6 +27,14 @@ public class ProductsServiceImpl implements ProductsService{
 		}
 		// Save the new clothing item
 		return psDao.save(products);
+	}
+
+	public Products findById(Integer productId)  {
+		Optional<Products> optionalProduct = psDao.findById(productId);
+		if (optionalProduct.isEmpty()) {
+			throw new ProductNotExistsException("product id is invalid: " + productId);
+		}
+		return optionalProduct.get();
 	}
 
 	@Override

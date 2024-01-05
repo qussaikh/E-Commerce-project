@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @ToString
@@ -19,14 +20,24 @@ public class Cart {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer cartItemId;	
+	private Integer cartId;
 
 	@OneToOne
+	@JoinColumn(name = "product_id")
 	private Products cartItem;
-	
 
-	@OneToOne
+
+	@ManyToOne
 	private User customerlist;
+
+//	private int quantity;
+
+//	@CreatedBy
+//	@Column(
+//			nullable = false,
+//			updatable = false
+//	)
+//	private Integer createdBy;
 
 
 	//	@OneToOne(cascade = CascadeType.ALL)

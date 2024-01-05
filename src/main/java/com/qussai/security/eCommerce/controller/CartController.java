@@ -31,13 +31,14 @@ public class CartController {
 	//To add the data we use this 
 	
 	@PostMapping("/addtocart/{id}/{custId}")
-	public ResponseEntity<Cart>addToCart(@RequestBody Cart cart, @PathVariable Integer id, @PathVariable Integer custId){
+	public ResponseEntity<Cart>addToCart(@RequestBody Cart cart,
+										 @PathVariable Integer id,
+										 @PathVariable Integer custId){
 		Cart uporder= cartService.AddProduct(cart, id, custId);
-		return new ResponseEntity<Cart>(uporder,HttpStatus.ACCEPTED);
+		return new ResponseEntity<Cart>(uporder,HttpStatus.CREATED);
 	}
 	
 	//To delete the cart data
-	
 	@DeleteMapping(value = "/cart/{id}")
 	public ResponseEntity<String> removeCartProduct(@PathVariable("id") Integer id){
 		

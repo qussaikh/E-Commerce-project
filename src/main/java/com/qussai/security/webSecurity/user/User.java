@@ -40,6 +40,8 @@ public class User implements UserDetails {
   @OneToMany(cascade = CascadeType.ALL)
   private List<Address> addresslist= new ArrayList<>();
 
+
+
   // Implementation of the UserDetails interface methods.
 
   @Override

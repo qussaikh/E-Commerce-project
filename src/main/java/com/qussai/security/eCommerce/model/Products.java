@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @ToString
@@ -32,6 +33,13 @@ public class Products {
 	private String manufacturer;
 	@Min(value = 1,message = "quantity should be minimum one")
 	private Integer quantity;
+
+	@CreatedBy
+	@Column(
+			nullable = false,
+			updatable = false
+	)
+	private Integer createdBy;
 	
 	@Enumerated(EnumType.STRING)
 	private CategoryEnum category;

@@ -3,6 +3,7 @@ package com.qussai.security.eCommerce.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.qussai.security.eCommerce.dto.cart.AddToCartDto;
 import com.qussai.security.eCommerce.exception.CustomerNotFoundException;
 import com.qussai.security.eCommerce.exception.ProductNotFoundException;
 import com.qussai.security.eCommerce.model.Cart;
@@ -23,65 +24,26 @@ public class CartServiceImpl implements CartService{
 	@Autowired
 	private UserRepository userDao;
 	
-//	@Autowired
-//	private CurrentUserSessionDao currentUserSessionDao;
-	
 	@Autowired
 	private CartDao cartDao;
-	
-//	@Autowired
-//	private CustomerDao custDao;
 	
 	@Autowired
 	private AddressDao addressDao;
 
-	
-	//Method to add the Product and customer in cart
+	private ProductsService productsService;
 
-	@Override
-	public Cart AddProduct(Cart cart, Integer Productid, Integer customerId) {
-		// TODO Auto-generated method stub\
-		
-		Optional<Products> opt=pDao.findById(Productid);
-		Optional<User> customer=userDao.findById(customerId);
-//		System.out.println(customer.get());
+	@Autowired
+	private CurrentUserSessionDao currentUserSessionDao;
 
-//		Optional< Customer> databaseCustomer = custDao.findById(customerId);
-		
-		if(customer.isEmpty()) {
-			throw new CustomerNotFoundException("customer not found");
-		}
-//		Customer getCustomer = databaseCustomer.get();
-		Optional<User> user=  userDao.findByEmail(customer.get().getEmail());
-		//String logedinOrNot = currentUserSessionDao.findByUserId(user.getUserId());
-		if(user==null) {
-			throw new CustomerNotFoundException("Customer not logged in");
-		}
 
-		if(opt.isPresent()) {
-		
-			Products prod=opt.get();
-			User cust=customer.get();
-
-			cart.setCartItem(prod);
-			cart.setCustomerlist(cust);
-//			for(Customer cust:customer) {				
-//				custDao.save(cust);				
-//			}	
-			return cartDao.save(cart);
-		}else {
-			throw new ProductNotFoundException("Product not available");
-		}
-	}
-	
 	//Method to view the cart
 
 	@Override
 	public List<Cart> ViewAllCart() {
 		// TODO Auto-generated method stub
 		List<Cart> list=cartDao.findAll();
-		
-		
+
+
 		return list;
 	}
 	
@@ -103,10 +65,49 @@ public class CartServiceImpl implements CartService{
 //	}
 //	
 
-	//Method to delete the product from cart
-	
+
+
+
+	//Method to add the Product and customer in cart
 	@Override
-    
+	public Cart AddProduct(Cart cart, Integer Productid, Integer customerId) {
+		// TODO Auto-generated method stub\
+
+		Optional<Products> opt=pDao.findById(Productid);
+		Optional<User> customer=userDao.findById(customerId);
+//		System.out.println(customer.get());
+
+//		Optional< Customer> databaseCustomer = custDao.findById(customerId);
+
+		if(customer.isEmpty()) {
+			throw new CustomerNotFoundException("customer not found");
+		}
+//		Customer getCustomer = databaseCustomer.get();
+		Optional<User> user=  userDao.findByEmail(customer.get().getEmail());
+		//String logedinOrNot = currentUserSessionDao.findByUserId(user.getUserId());
+		if(user==null) {
+			throw new CustomerNotFoundException("Customer not logged in");
+		}
+
+		if(opt.isPresent()) {
+
+			Products prod=opt.get();
+			User cust=customer.get();
+
+			cart.setCartItem(prod);
+			cart.setCustomerlist(cust);
+//			for(Customer cust:customer) {
+//				custDao.save(cust);
+//			}
+			return cartDao.save(cart);
+		}else {
+			throw new ProductNotFoundException("Product not available");
+		}
+	}
+
+
+	//Method to delete the product from cart
+	@Override
 	public String deleteProductfromCart(Integer id)throws ProductNotFoundException {
 		Optional<Cart> opt = cartDao.findById(id);
 		
@@ -131,8 +132,10 @@ public class CartServiceImpl implements CartService{
 //		return "Cart is empty";
 	}
 
-	
+	@Override
+	public Cart AddProduct(AddToCartDto addToCartDto, Integer Productid, Integer customerId) {
+		return null;
+	}
 
-	
-	
+
 }

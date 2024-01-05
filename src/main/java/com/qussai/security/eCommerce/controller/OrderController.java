@@ -43,7 +43,7 @@ public class OrderController {
 	@GetMapping("/findByCustomerId/{customerId}")
 	public ResponseEntity<MyOrder>viewOrderByCustomerID(@PathVariable Integer customerId){
 		MyOrder findOrder=orderservice.viewOrderByCustomerId(customerId);
-		return new ResponseEntity<MyOrder>(findOrder,HttpStatus.ACCEPTED);
+		return new ResponseEntity<MyOrder>(findOrder,HttpStatus.OK);
 	}
 	
 	@GetMapping("/findOrderByUserName/{FirstName}/{LastName}/{mobileNo}")

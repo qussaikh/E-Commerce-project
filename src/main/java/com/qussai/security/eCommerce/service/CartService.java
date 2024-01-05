@@ -2,6 +2,7 @@ package com.qussai.security.eCommerce.service;
 
 import java.util.List;
 
+import com.qussai.security.eCommerce.dto.cart.AddToCartDto;
 import com.qussai.security.eCommerce.model.Cart;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,9 @@ public interface CartService {
 	public void deleteAllCart();
 	
 //	public String DeleteALl();
-	
+
+	Cart AddProduct(AddToCartDto addToCartDto, Integer Productid, Integer customerId);
+
 	public List<Cart> ViewAllCart();
 	
 }
