@@ -1,10 +1,9 @@
 package com.qussai.security.webSecurity.user;
 
-import com.qussai.security.eCommerce.model.Address;
+
 import com.qussai.security.webSecurity.token.Token;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -37,8 +36,8 @@ public class User implements UserDetails {
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
 
-  @OneToMany(cascade = CascadeType.ALL)
-  private List<Address> addresslist= new ArrayList<>();
+//  @OneToMany(cascade = CascadeType.ALL)
+//  private List<Address> addresslist= new ArrayList<>();
 
 
 

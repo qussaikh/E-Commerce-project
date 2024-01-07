@@ -1,8 +1,10 @@
 package com.qussai.security.eCommerce.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.qussai.security.eCommerce.model.Cart;
+import com.qussai.security.eCommerce.model.CartItem;
 import com.qussai.security.eCommerce.repository.CartDao;
 import com.qussai.security.eCommerce.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class CartController {
 	@Autowired 
 	private CartDao cDao;
 
+
+
 	//To add the data we use this 
 	
 	@PostMapping("/addtocart/{id}/{custId}")
@@ -39,7 +43,7 @@ public class CartController {
 	}
 	
 	//To delete the cart data
-	@DeleteMapping(value = "/cart/{id}")
+	@DeleteMapping(value = "/cart/removeCartItem/{id}")
 	public ResponseEntity<String> removeCartProduct(@PathVariable("id") Integer id){
 		
 		String res = cartService.deleteProductfromCart(id);
@@ -56,7 +60,32 @@ public class CartController {
 
 		return new ResponseEntity<List<Cart>>(list, HttpStatus.OK);
 	}
-	
+
+	@GetMapping("/cart/viewAllCart")
+	public ResponseEntity<List<CartItem>> getAllProducts() {
+
+		List<Cart> cartList = cartService.ViewAllCart();
+		List<CartItem> customCartList = new ArrayList<>();
+
+		for (Cart cart : cartList) {
+			CartItem customCart = new CartItem();
+			customCart.setProductName(cart.getCartItem().getProductName());
+			customCart.setPrice(cart.getCartItem().getPrice());
+			customCart.setColor(cart.getCartItem().getColor());
+			customCartList.add(customCart);
+		}
+
+		return new ResponseEntity<>(customCartList, HttpStatus.OK);
+	}
+
+//	@GetMapping("/cart")
+//	public ResponseEntity<List<CartItem>> getAllProductsHandler() {
+//		List<CartItem> cartItems = cartService.ViewAllCart();
+//
+//		return new ResponseEntity<>(cartItems, HttpStatus.OK);
+//	}
+
+
 	//To update the cart data
 	
 //	@PutMapping("/carts")

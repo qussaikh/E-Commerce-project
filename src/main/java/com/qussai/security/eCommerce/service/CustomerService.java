@@ -1,7 +1,7 @@
 package com.qussai.security.eCommerce.service;
 
 
-import com.qussai.security.eCommerce.model.Address;
+
 
 import com.qussai.security.webSecurity.user.User;
 
@@ -20,6 +20,6 @@ public interface CustomerService {
 	
 	public List<User> viewAllCustomerByLocation(String location);
 	
-	public User addAddress(Address address, Integer customerId);
+	//public User addAddress(Address address, Integer customerId);
 
 }

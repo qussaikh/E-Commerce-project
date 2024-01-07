@@ -27,8 +27,8 @@ public class CartServiceImpl implements CartService{
 	@Autowired
 	private CartDao cartDao;
 	
-	@Autowired
-	private AddressDao addressDao;
+//	@Autowired
+//	private AddressDao addressDao;
 
 	private ProductsService productsService;
 
@@ -41,10 +41,9 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public List<Cart> ViewAllCart() {
 		// TODO Auto-generated method stub
-		List<Cart> list=cartDao.findAll();
+		List<Cart> list =cartDao.findAll();
 
-
-		return list;
+		return cartDao.findAll();
 	}
 	
 	

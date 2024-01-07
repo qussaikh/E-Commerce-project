@@ -148,7 +148,7 @@ Content-Type: application/json
 "category": "Byxor"
 }
 
-### Update  product
+### Delete  product
 * URL Params
   DELETE http://localhost:8080/deleteproduct/2
 * Headers
@@ -156,84 +156,37 @@ Content-Type: application/json
 * Data Params
 
 
-
-
-
-### Query to Movies endpoint after password change
-### Create a new movie
+### Add Product to Cart
 * URL Params
-POST http://localhost:8080/api/v1/movies
+  POST http://localhost:8080/Cart/addtocart/{id}/{custId}
 * Headers
-Authorization: Bearer {{auth-token}}
-Content-Type: application/json
-* data Param
-  {
-  "title": "The Dark Knight",
-  "rating": 9,
-  "description": "Christopher Nolan's masterpiece featuring Batman facing off against the joker, exploring themes of chaos, morality, and the thin line between hero and villain. "
-  }
-* Success Response:
-  Code: 200
-
-### Get all movies 
-* URL Param
-GET http://localhost:8080/api/v1/movies
-* Header
-Authorization: Bearer {{new-auth-token}}
-* Success Response:
-  Code: 200
-  Content: 
-[
-  {
-  "id": 1,
-  "title": "The Dark Knight",
-  "rating": 9,
-  "description": "Christopher Nolan's masterpiece featuring Batman facing off against the joker, exploring themes of chaos, morality, and the thin line between hero and villain. ",
-  "createDate": "2023-11-27T23:03:15.686519",
-  "createdBy": 2
-  }
-]
-
-### Get  movie by id
-* URL Param
-  GET http://localhost:8080/api/v1/movies/{id}
-* Header
-  Authorization: Bearer {{new-auth-token}}
-* Success Response:
-  Code: 200
-  Content:
-  
-  {
-  "id": 1,
-  "title": "The Dark Knight ",
-  "rating": 9,
-  "description": " Christopher Nolan's masterpiece featuring Batman facing off against the joker, exploring themes of chaos, morality, and the thin line between hero and villain. ",
-  "createDate": "2023-11-27T23:03:15.686519",
-  "createdBy": 2
-  }
-  
-### Update a movie
-* URL Params
-  Put http://localhost:8080/api/v1/movies/{id}
-* Headers
-  Authorization: Bearer {{auth-token}}
   Content-Type: application/json
-* data Param
+* Data Params
+
   {
-  "title": "The Dark Knight",
-  "rating": 7.4/10,
-  "description": "Christopher Nolan's masterpiece featuring Batman facing off against the joker, exploring themes of chaos, morality, and the thin line between hero and villain. "
+  "cartItem": {
+  "productId": 1
+  },
+  "customerlist": {
+  "userId": 2
   }
-* Success Response:
-  Code: 200
+  }
 
-### Delete a movie
+### Get All cart item Handler
 * URL Params
-  Delete http://localhost:8080/api/v1/movies/{id}
+  GET http://localhost:8080/Cart/cart/viewAllCart
 * Headers
-  Authorization: Bearer {{auth-token}}
-* Success Response:
-  Code: 200
+  Content-Type: application/json
+* Data Params
 
-The Secure Movie Service combines robust security measures with efficient movie management capabilities, 
-offering a secure and seamless experience for both administrators and regular users interacting with the system.
+
+### Clean cart
+* URL Params
+  DELETE http://localhost:8080/Cart/cart/clear
+* Headers
+  Content-Type: application/json
+* Data Params
+
+
+
+

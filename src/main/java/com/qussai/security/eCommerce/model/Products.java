@@ -26,11 +26,13 @@ public class Products {
 	private String productName;
 	@NotNull(message = "please input a valid product name")
 	private Double price;
-	private String color; 
-	private String dimension;
-	private String specification;
-	@NotNull(message = "please input a valid manufacturer")
-	private String manufacturer;
+	private String color;
+
+//	private String dimension;
+//	private String specification;
+//	@NotNull(message = "please input a valid manufacturer")
+//	private String manufacturer;
+
 	@Min(value = 1,message = "quantity should be minimum one")
 	private Integer quantity;
 
