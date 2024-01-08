@@ -50,8 +50,6 @@ public class SecurityConfiguration {
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
                                 .requestMatchers(PATCH, "/api/v1/users/**").hasAnyRole(Role.ADMIN.name(), Role.USER.name())
-                                .requestMatchers(GET, "/api/v1/movies/**").hasAnyRole(Role.ADMIN.name(), Role.USER.name())
-                                .requestMatchers(POST, "/api/v1/movies/**").hasAnyRole(Role.ADMIN.name(), Role.USER.name())
                                 .requestMatchers(POST, "/addnewproducts/**").hasAnyRole(Role.ADMIN.name())
                                 .requestMatchers(PUT, "/updateproducts/**").hasAnyRole(Role.ADMIN.name())
                                 .requestMatchers(DELETE, "/deleteproduct/**").hasAnyRole(Role.ADMIN.name())

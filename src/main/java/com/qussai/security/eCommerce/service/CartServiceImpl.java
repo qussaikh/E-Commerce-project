@@ -32,8 +32,8 @@ public class CartServiceImpl implements CartService{
 
 	private ProductsService productsService;
 
-	@Autowired
-	private CurrentUserSessionDao currentUserSessionDao;
+//	@Autowired
+//	private CurrentUserSessionDao currentUserSessionDao;
 
 
 	//Method to view the cart

@@ -32,6 +32,7 @@ public class AuthenticationService {
 
   // Service for handling JSON Web Tokens (JWT).
   private final JwtService jwtService;
+
   // AuthenticationManager for authenticating users.
   private final AuthenticationManager authenticationManager;
 
@@ -104,7 +105,7 @@ public class AuthenticationService {
     saveUserToken(user, jwtToken);
     // Return the authentication response.
     return AuthenticationResponse.builder()
-        .accessToken(jwtToken)
+            .accessToken(jwtToken)
             .refreshToken(refreshToken)
         .build();
   }
