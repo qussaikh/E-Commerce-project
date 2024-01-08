@@ -3,9 +3,17 @@ package com.qussai.security.eCommerce.model;
 import java.util.List;
 
 public class CartDto {
+
+
     private List<Cart> cartItems;
 
+
+
     private double totalCost;
+
+
+
+
 
     public CartDto(List<Cart> cartItemDtoList, double totalCost) {
         this.cartItems = cartItemDtoList;

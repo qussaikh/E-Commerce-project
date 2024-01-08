@@ -3,10 +3,10 @@ package com.qussai.security.eCommerce.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.qussai.security.eCommerce.dto.cart.AddToCartDto;
 import com.qussai.security.eCommerce.exception.CustomerNotFoundException;
 import com.qussai.security.eCommerce.exception.ProductNotFoundException;
 import com.qussai.security.eCommerce.model.Cart;
+import com.qussai.security.eCommerce.model.CartItem;
 import com.qussai.security.eCommerce.model.Products;
 import com.qussai.security.eCommerce.repository.*;
 import com.qussai.security.webSecurity.user.User;
@@ -69,40 +69,41 @@ public class CartServiceImpl implements CartService{
 
 	//Method to add the Product and customer in cart
 	@Override
-	public Cart AddProduct(Cart cart, Integer Productid, Integer customerId) {
-		// TODO Auto-generated method stub\
+	public Cart AddProduct(Cart cart, Integer Productid, Integer customerId, Integer quantity) {
+		Optional<Products> opt = pDao.findById(Productid);
+		Optional<User> customer = userDao.findById(customerId);
 
-		Optional<Products> opt=pDao.findById(Productid);
-		Optional<User> customer=userDao.findById(customerId);
-//		System.out.println(customer.get());
-
-//		Optional< Customer> databaseCustomer = custDao.findById(customerId);
-
-		if(customer.isEmpty()) {
-			throw new CustomerNotFoundException("customer not found");
+		if (customer.isEmpty()) {
+			throw new CustomerNotFoundException("Customer not found");
 		}
-//		Customer getCustomer = databaseCustomer.get();
-		Optional<User> user=  userDao.findByEmail(customer.get().getEmail());
-		//String logedinOrNot = currentUserSessionDao.findByUserId(user.getUserId());
-		if(user==null) {
+
+		Optional<User> user = userDao.findByEmail(customer.get().getEmail());
+		if (user == null) {
 			throw new CustomerNotFoundException("Customer not logged in");
 		}
 
-		if(opt.isPresent()) {
+		if (opt.isPresent()) {
+			Products prod = opt.get();
+			User cust = customer.get();
 
-			Products prod=opt.get();
-			User cust=customer.get();
+//			// Skapa en ny CartItem med kvantitet och koppla den till produkten
+//			CartItem cartItem = new CartItem();
+//			cartItem.setProductId(Long.valueOf(prod.getProductId()));
+//			cartItem.setProductName(prod.getProductName());
+//			cartItem.setPrice(prod.getPrice());
+//			cartItem.setColor(prod.getColor());
+//			cartItem.setQuantity(quantity);
 
+			// Lägg till CartItem och kund i kundvagnen
 			cart.setCartItem(prod);
 			cart.setCustomerlist(cust);
-//			for(Customer cust:customer) {
-//				custDao.save(cust);
-//			}
+
 			return cartDao.save(cart);
-		}else {
+		} else {
 			throw new ProductNotFoundException("Product not available");
 		}
 	}
+
 
 
 	//Method to delete the product from cart
@@ -131,10 +132,7 @@ public class CartServiceImpl implements CartService{
 //		return "Cart is empty";
 	}
 
-	@Override
-	public Cart AddProduct(AddToCartDto addToCartDto, Integer Productid, Integer customerId) {
-		return null;
-	}
+
 
 
 }

@@ -12,7 +12,9 @@ public interface CartService {
 		
 //	public Cart addProductToCart(Cart cart,String Name, Integer quantity);
 	
-	public Cart AddProduct(Cart cart, Integer Productid, Integer customerId);
+	public Cart AddProduct(Cart cart, Integer Productid, Integer customerId,Integer quantity);
+
+	//public Cart AddProduct(Cart cart, Integer Productid, Integer customerId,int quantity);
 	
 //	public Cart UpdateCartProduct(Cart cart);
 	
@@ -22,7 +24,7 @@ public interface CartService {
 	
 //	public String DeleteALl();
 
-	Cart AddProduct(AddToCartDto addToCartDto, Integer Productid, Integer customerId);
+	//Cart AddProduct(AddToCartDto addToCartDto, Integer Productid, Integer customerId);
 
 	public List<Cart> ViewAllCart();
 	

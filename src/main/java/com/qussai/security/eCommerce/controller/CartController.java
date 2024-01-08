@@ -37,8 +37,9 @@ public class CartController {
 	@PostMapping("/addtocart/{id}/{custId}")
 	public ResponseEntity<Cart>addToCart(@RequestBody Cart cart,
 										 @PathVariable Integer id,
-										 @PathVariable Integer custId){
-		Cart uporder= cartService.AddProduct(cart, id, custId);
+										 @PathVariable Integer custId,
+										  Integer quantity){
+		Cart uporder= cartService.AddProduct(cart, id, custId, quantity);
 		return new ResponseEntity<Cart>(uporder,HttpStatus.CREATED);
 	}
 	
@@ -72,6 +73,7 @@ public class CartController {
 			customCart.setProductName(cart.getCartItem().getProductName());
 			customCart.setPrice(cart.getCartItem().getPrice());
 			customCart.setColor(cart.getCartItem().getColor());
+			customCart.setQuantity(cart.getQuantity());
 			customCartList.add(customCart);
 		}
 

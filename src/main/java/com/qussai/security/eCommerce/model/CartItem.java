@@ -17,9 +17,6 @@ public class CartItem {
     private String productName;
     private double price;
     private String color;
-//    private String dimension;
-//    private String specification;
-//    private String manufacturer;
     private int quantity;
     private Long createdBy;
     private String category;

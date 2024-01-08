@@ -35,9 +35,6 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private ProductsDao productDao;
 	
-//	@Autowired
-//	private AddressDao addressDao;
-	
 	@Autowired
 	private CartDao cartDao;
 	
