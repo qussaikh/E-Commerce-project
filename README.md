@@ -179,13 +179,6 @@ Content-Type: application/json
   Content-Type: application/json
 * Data Params
 
-### delete item from cart by id
-* URL Params
-  DELETE http://localhost:8080/Cart/cart/removeCartItem/{id}
-* Headers
-  Content-Type: application/json
-* Data Params 
-
 
 ### Clean cart
 * URL Params
