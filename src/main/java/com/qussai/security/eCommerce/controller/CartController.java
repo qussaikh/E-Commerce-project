@@ -72,7 +72,7 @@ public class CartController {
 			CartItem customCart = new CartItem();
 			customCart.setProductName(cart.getCartItem().getProductName());
 			customCart.setPrice(cart.getCartItem().getPrice());
-			customCart.setColor(cart.getCartItem().getColor());
+			customCart.setDescription(cart.getCartItem().getDescription());
 			customCart.setQuantity(cart.getQuantity());
 			customCartList.add(customCart);
 		}
@@ -80,25 +80,6 @@ public class CartController {
 		return new ResponseEntity<>(customCartList, HttpStatus.OK);
 	}
 
-//	@GetMapping("/cart")
-//	public ResponseEntity<List<CartItem>> getAllProductsHandler() {
-//		List<CartItem> cartItems = cartService.ViewAllCart();
-//
-//		return new ResponseEntity<>(cartItems, HttpStatus.OK);
-//	}
-
-
-	//To update the cart data
-	
-//	@PutMapping("/carts")
-//	public ResponseEntity<Cart> updateProductInCatalogHandler(@RequestBody Cart cart) {
-//
-//		Cart cart1=cartService.UpdateCartProduct(cart);
-//
-//		return new ResponseEntity<Cart>(cart1, HttpStatus.OK);
-//
-//	}
-//	
 	@DeleteMapping(value = "/cart/clear")
 	public String clearCartHandler(){
 		cartService.deleteAllCart();

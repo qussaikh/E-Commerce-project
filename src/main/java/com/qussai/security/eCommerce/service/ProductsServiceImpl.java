@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import com.qussai.security.eCommerce.exception.ProductNotExistsException;
 import com.qussai.security.eCommerce.exception.ProductNotFoundException;
-import com.qussai.security.eCommerce.model.CategoryEnum;
 import com.qussai.security.eCommerce.model.Products;
 import com.qussai.security.eCommerce.model.ProductsDTO;
 import com.qussai.security.eCommerce.repository.ProductsDao;
@@ -59,19 +58,6 @@ public class ProductsServiceImpl implements ProductsService{
 			throw new ProductNotFoundException("Product not found with given id");
 	}
 
-
-	// todo
-	@Override
-	public List<ProductsDTO> getCategoryWiseProducts(CategoryEnum cat) {
-		return null;
-	}
-
-	public List<Products> getCategoryWiseProducts(String cat) {
-
-		List<Products> result= psDao.findByProductName(cat);
-
-		return result;
-	}
 
 	@Override
 	public String deleteProductFromCatalog(Integer id) throws ProductNotFoundException {

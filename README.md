@@ -1,6 +1,6 @@
 # Spring Boot Security with JWT Implementation
-The Secure Movie Service is  web application developed in Java, leveraging the Spring Security framework to ensure a secure and authenticated experience for users. 
-The project is designed to manage user authentication, authorization, and movie-related operations through a set of well-defined RESTful API endpoints.
+The Secure Fruit Service is web application developed in Java, leveraging the Spring Security framework to ensure a secure and authenticated experience for users. 
+The project is designed to manage user authentication, authorization, and fruit-related operations through a set of well-defined RESTful API endpoints.
 
 Project implementation of security using Spring Boot 3.0 and JSON Web Tokens (JWT). It includes the following features:
 
@@ -11,6 +11,8 @@ Project implementation of security using Spring Boot 3.0 and JSON Web Tokens (JW
 * Customized access denied handling
 * Logout mechanism
 * Refresh token
+* Product CRUD
+* Shopping Cart CRUD
 
 ## Technologies
 * Spring Boot 3.0
@@ -105,15 +107,12 @@ Content-Type: application/json
 * Data Params
 
 {
-"productName": "Sample Product 4",
-"price": 999.99,
-"color": "red",
-"dimension": "10x15x5",
-"specification": "Sample specifications 3 ",
-"manufacturer": "ABC Manufacturing",
-"quantity": 99,
-"category": "Byxor"
+"productName": "Sample Product 2",
+"price": 19.99,
+"description": "description",
+"quantity": 10
 }
+
 
 ### Get all products
 * URL Params
@@ -137,20 +136,18 @@ Content-Type: application/json
 * Data Params
 
 {
-"productId": 102,
-"productName": "Sample Product 2",
-"price": 899.99,
-"color": "Light red",
-"dimension": "10x15x5",
-"specification": "Sample specifications 2 ",
-"manufacturer": "ABC Manufacturing",
-"quantity": 90,
-"category": "Byxor"
+"productId": 1,
+"productName": "Sample Product 1",
+"price": 19.99,
+"description": "description",
+"quantity": 100
 }
+
+
 
 ### Delete  product
 * URL Params
-  DELETE http://localhost:8080/deleteproduct/2
+  DELETE http://localhost:8080/deleteproduct/{id}
 * Headers
   Content-Type: application/json
 * Data Params
@@ -175,6 +172,13 @@ Content-Type: application/json
 ### Get All cart item Handler
 * URL Params
   GET http://localhost:8080/Cart/cart/viewAllCart
+* Headers
+  Content-Type: application/json
+* Data Params
+
+### Remove Cart Item by id
+* URL Params
+  DELETE http://localhost:8080/Cart/cart/removeCartItem/{id}
 * Headers
   Content-Type: application/json
 * Data Params

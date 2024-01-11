@@ -26,12 +26,7 @@ public class Products {
 	private String productName;
 	@NotNull(message = "please input a valid product name")
 	private Double price;
-	private String color;
-
-//	private String dimension;
-//	private String specification;
-//	@NotNull(message = "please input a valid manufacturer")
-//	private String manufacturer;
+	private String description;
 
 	@Min(value = 1,message = "quantity should be minimum one")
 	private Integer quantity;
@@ -42,8 +37,6 @@ public class Products {
 			updatable = false
 	)
 	private Integer createdBy;
-	
-	@Enumerated(EnumType.STRING)
-	private CategoryEnum category;
+
 
 }

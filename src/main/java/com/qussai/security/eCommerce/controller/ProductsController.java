@@ -3,9 +3,7 @@ package com.qussai.security.eCommerce.controller;
 import java.util.List;
 
 
-import com.qussai.security.eCommerce.model.CategoryEnum;
 import com.qussai.security.eCommerce.model.Products;
-import com.qussai.security.eCommerce.model.ProductsDTO;
 import com.qussai.security.eCommerce.service.ProductsService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +47,6 @@ public class ProductsController {
 		Products result = ppService.getProductsFromCatalogById(id);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 
-	}
-/////////////////////////////////////////////////////////////////////
-	@GetMapping("/products/{cat}")
-	public List<ProductsDTO> getCategoryWiseProducts(@PathVariable("cat") CategoryEnum cat) {
-	
-		return ppService.getCategoryWiseProducts(cat);
-		
 	}
 	
 	//////////////////////////////////////////////////////////////////

@@ -38,38 +38,4 @@ public class Cart {
 
 	private int quantity;
 
-//	@CreatedBy
-//	@Column(
-//			nullable = false,
-//			updatable = false
-//	)
-//	private Integer createdBy;
-
-
-	//	@OneToOne(cascade = CascadeType.ALL)
-//	@JsonIgnore
-//	private Customer customer;
-
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "ADDRESS_ID", referencedColumnName = "addressId")
-
-//	private Double cartTotal;
-	
-
-
-
-//	public Customer getCustomer() {
-//		return customer;
-//	}
-//
-//	public void setCustomer(Customer customer) {
-//		this.customer = customer;
-//	}
-
-	
-
-	
-	
-
-	
 }
